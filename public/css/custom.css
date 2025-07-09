@@ -1,0 +1,63 @@
+html, body {
+    height: 100%;
+    margin: 0;
+  }
+
+  body {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .main-wrapper {
+    flex: 1;
+    display: flex;
+    overflow: hidden;
+  }
+
+  .sidebar {
+    width: 200px;
+    background-color: #f8f9fa;
+    padding: 1rem;
+    flex-shrink: 0;
+  }
+
+  .main-content {
+    flex: 1;
+    padding: 1rem;
+    overflow-y: auto;
+    max-height: 100vh;
+    background-color: #fff;
+  }
+  body, html {
+    height: 100%;
+    margin: 0;
+  }
+
+  .main-wrapper {
+    display: flex;
+    height: calc(100vh - 56px); /* بعد حذف ارتفاع الـ navbar */
+  }
+
+  .sidebar {
+    width: 200px;
+    background-color: #f8f9fa;
+    padding: 1rem;
+    flex-shrink: 0;
+  }
+
+  .main-content {
+    flex: 1;
+    padding: 1rem;
+    overflow-y: auto;
+    background-color: #fff;
+  }
+
+  .logout-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }

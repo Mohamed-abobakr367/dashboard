@@ -12,40 +12,42 @@ class LoginController extends Controller
     
     public function loginForm(Request $request){
 
-       
-
         if (Auth::check()) {
             return redirect('/dashboard'); 
         }
     
-       
         return view('auth.login');
     }
 
 
 
     public function login(Request $request) 
-    {
+{
+    $credentials = $request->only('email', 'password');
 
-        $credentials = $request->only('email', 'password');
-        
-        if (Auth::attempt($credentials)) {
-            $user = Auth::user();
-    
-            if ($user->user_status !== 'active') {
-                Auth::logout();
-    
-                return back()->withErrors([
-                    'email' => 'Your account is ' . $user->user_status . '. You cannot login.',
-                ]);
-            }
-    
+    if (Auth::attempt($credentials)) {
+        $user = Auth::user();
+
+        if ($user->user_status !== 'active') {
+            Auth::logout();
+
+            return back()->withErrors([
+                'email' => 'Your account is ' . $user->user_status . '. You cannot login.',
+            ]);
+        }
+
+        if ($user->role === 'admin') {
             return redirect()->intended('/dashboard');
         }
-        return back()->withErrors([
-            'email' => 'Invalid credentials.',
-        ]);
+        
+        return redirect()->intended('/landingpage');
     }
+
+    return back()->withErrors([
+        'email' => 'Invalid credentials.',
+    ]);
+}
+
     
     public function logout(Request $request): RedirectResponse
     {

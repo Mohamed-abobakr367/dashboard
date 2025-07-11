@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\OrderStatus;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -9,7 +10,11 @@ class Order extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id', 'total'];
+    protected $fillable = ['user_id', 'customer_address', 'status'];
+    
+    protected $casts = [
+        'status' => OrderStatus::class,
+    ];
 
     public function user()
     {
@@ -18,6 +23,6 @@ class Order extends Model
 
     public function items()
     {
-        return $this->belongsToMany(Item::class)->withPivot('quantity');
+        return $this->belongsToMany(Item::class,'item_order')->withPivot('quantity','price');
     }
 }

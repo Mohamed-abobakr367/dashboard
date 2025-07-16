@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\auth;
 
+use App\Enums\UserRoleEnum;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -36,7 +37,7 @@ class LoginController extends Controller
             ]);
         }
 
-        if ($user->role === 'admin') {
+        if ($user->role === UserRoleEnum::Admin) {
             return redirect()->intended('/dashboard');
         }
         

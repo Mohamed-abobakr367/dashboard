@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Enums\OrderStatus;
+use App\Enums\OrderStatusEnum;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
 use Illuminate\Http\Request;
@@ -13,11 +13,11 @@ class ConfirmController extends Controller
     {
         $status = strtolower($status);
 
-        if (!in_array($status, array_column(OrderStatus::cases(), 'value'))) {
+        if (!in_array($status, array_column(OrderStatusEnum::cases(), 'value'))) {
             abort(400, 'Invalid status');
         }
 
-        $order->status = OrderStatus::from($status);
+        $order->status = OrderStatusEnum::from($status);
         $order->save();
 
         return redirect()->back()->with('success', "Order marked as $status.");

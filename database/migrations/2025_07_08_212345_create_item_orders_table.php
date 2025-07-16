@@ -8,7 +8,7 @@ class CreateItemOrderTable extends Migration
 {
     public function up()
     {
-        Schema::create('order_items', function (Blueprint $table) {
+        Schema::create('item_orders', function (Blueprint $table) {
             $table->id();
             $table->foreignId('order_id')->constrained('orders')->onDelete('cascade');
             $table->foreignId('item_id')->constrained('items')->onDelete('cascade');
@@ -19,6 +19,6 @@ class CreateItemOrderTable extends Migration
     }
     public function down()
     {
-        Schema::dropIfExists('item_order');
+        Schema::dropIfExists('item_orders');
     }
 }

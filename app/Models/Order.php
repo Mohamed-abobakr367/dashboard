@@ -23,6 +23,6 @@ class Order extends Model
 
     public function items()
     {
-        return $this->belongsToMany(Item::class,'item_order')->withPivot('quantity','price');
+        return $this->belongsToMany(Item::class,'item_orders')->withPivot('quantity','price');
     }
 }

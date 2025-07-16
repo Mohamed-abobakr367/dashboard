@@ -14,7 +14,7 @@ class CheckAdmin
     public function handle(Request $request, Closure $next): Response
     {
         if (Auth::check()) {
-            if (Auth::user()->role === UserRole::Admin) {
+            if (Auth::user()->role == UserRole::Admin) {
                 return $next($request);
             }
             return redirect('/dashboard')->with('error', 'You do not have administrative access.');

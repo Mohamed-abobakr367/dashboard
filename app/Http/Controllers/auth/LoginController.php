@@ -4,6 +4,7 @@ namespace App\Http\Controllers\auth;
 
 use App\Enums\UserRoleEnum;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Auth\LoginRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth ;
@@ -22,9 +23,9 @@ class LoginController extends Controller
 
 
 
-    public function login(Request $request) 
+    public function login(LoginRequest  $request) 
 {
-    $credentials = $request->only('email', 'password');
+    $credentials = $request->validate();
 
     if (Auth::attempt($credentials)) {
         $user = Auth::user();
@@ -45,7 +46,7 @@ class LoginController extends Controller
     }
 
     return back()->withErrors([
-        'email' => 'Invalid credentials.',
+        'email' => 'Invalid credentials.'
     ]);
 }
 

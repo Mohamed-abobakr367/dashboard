@@ -30,4 +30,6 @@ class ItemsController extends Controller
     
         return view('admin.items.index', compact('items'))->with('search', $request->search);
     }
+
+    
 }

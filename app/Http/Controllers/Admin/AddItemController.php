@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Item\AddItemRequest;
 use App\Models\Category;
 use App\Models\Item;
 use App\Models\User;
@@ -19,15 +20,15 @@ class AddItemController extends Controller
         return view('admin.items.create',compact('categories','users'));   
     }
 
-    public function store(Request $request)
+    public function store(AddItemRequest $request)
     {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'price' => 'required|numeric',
-            'category_id' => 'required|exists:categories,id',
-            'user_id' => 'required|exists:users,id',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-        ]);
+        // $request->validate([
+        //     'name' => 'required|string|max:255',
+        //     'price' => 'required|numeric',
+        //     'category_id' => 'required|exists:categories,id',
+        //     'user_id' => 'required|exists:users,id',
+        //     'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        // ]);
 
         $item = new Item();
         $item->name = $request->name;

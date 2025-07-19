@@ -53,7 +53,7 @@
 
             @if ($order->status->value === 'pending')
                 <div class="d-flex justify-content-end gap-2 mt-3">
-                    <form method="POST" action="{{ route('admin.orders.confirm', [$order->id, 'confirmed']) }}">
+                    <form method="POST" action="{{ route('admin.orders.confirm', [$order->id, 'Confirmed']) }}">
                         @csrf @method('PUT')
                         <button class="btn btn-success">Confirm</button>
                     </form>

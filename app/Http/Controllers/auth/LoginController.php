@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Auth ;
 class LoginController extends Controller
 {
     
-    public function loginForm(Request $request){
+    public function loginForm(){
 
         if (Auth::check()) {
             return redirect('/dashboard'); 
@@ -25,7 +25,7 @@ class LoginController extends Controller
 
     public function login(LoginRequest  $request) 
 {
-    $credentials = $request->validate();
+    $credentials = $request->validated();
 
     if (Auth::attempt($credentials)) {
         $user = Auth::user();
@@ -50,13 +50,4 @@ class LoginController extends Controller
     ]);
 }
 
-    
-    public function logout(Request $request): RedirectResponse
-    {
-        Auth::logout();
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
-
-        return redirect('/login');
-    }
 }

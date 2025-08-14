@@ -41,7 +41,7 @@
       <div>
         <ul class="nav flex-column p-3">
           <li class="nav-item mb-3">
-            <a href="{{route('users')}}" class="d-flex align-items-center gap-2 text-decoration-none text-dark">
+            <a href="{{route('users.index')}}" class="d-flex align-items-center gap-2 text-decoration-none text-dark">
               <div class="bg-light rounded shadow-sm d-flex align-items-center justify-content-center"
                    style="width: 36px; height: 36px;">
                 <i class="fa-solid fa-user-group"></i>
@@ -81,7 +81,7 @@
 
   
       <div class="p-3 border-top">
-        <a href="{{ url('/landingpage') }}" target="_blank" class="d-flex align-items-center gap-2 text-decoration-none text-dark">
+        <a href="{{ url('/landing-page') }}" target="_blank" class="d-flex align-items-center gap-2 text-decoration-none text-dark">
           <div class="bg-light rounded shadow-sm d-flex align-items-center justify-content-center"
                style="width: 36px; height: 36px;">
             <i class="fa-solid fa-globe"></i>

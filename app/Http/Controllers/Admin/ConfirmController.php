@@ -5,20 +5,23 @@ namespace App\Http\Controllers\Admin;
 use App\Enums\OrderStatusEnum;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
+use App\Services\ConfirmService;
+use InvalidArgumentException;
 
-class ConfirmController extends Controller
-{
-    public function confirm(Order $order, $status)
-    {
-        $status = strtolower($status);
+class ConfirmController extends Controller {
+    private $orderService;
 
-        if (!in_array($status, array_column(OrderStatusEnum::cases(), 'value'))) {
-            abort(400, 'Invalid status');
+    public function __construct(ConfirmService $orderService) {
+        $this->orderService = $orderService;
+    }
+
+    public function confirm(Order $order, string $status) {
+        try {
+            $this->orderService->confirmOrder($order, $status);
+            return redirect()->back()->with('success', "Order marked as {$status}.");
+        } catch (InvalidArgumentException $e) {
+            return redirect()->back()->withErrors(['status' => $e->getMessage()]);
         }
-
-        $order->status = OrderStatusEnum::from($status);
-        $order->save();
-
-        return redirect()->back()->with('success', "Order marked as $status.");
     }
 }
+

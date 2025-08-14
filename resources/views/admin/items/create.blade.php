@@ -33,7 +33,7 @@
             <select name="user_id" id="user_id" class="form-select" required>
                 <option value="" disabled selected>Select a user</option>
                 @foreach ($users as $user)
-                    <option value="{{ $user->id }}" {{ old('user_id') == $user->id ? 'selected' : '' }}>
+                    <option value="{{ $user->id }}" {{ ('user_id') == $user->id ? 'selected' : '' }}>
                         {{ $user->email }}
                     </option>
                 @endforeach
@@ -45,7 +45,7 @@
             <select name="category_id" id="category_id" class="form-select">
                 <option value="">No category</option>
                 @foreach ($categories as $category)
-                    <option value="{{ $category->id }}" {{ old('category_id') == $category->id ? 'selected' : '' }}>
+                    <option value="{{ $category->id }}" {{ ('category_id') == $category->id ? 'selected' : '' }}>
                         {{ $category->name }}
                     </option>
                 @endforeach

@@ -44,13 +44,12 @@
                         <tr>
                             <th colspan="4" class="text-end">Total:</th>
                             <th>
-                                {{ number_format($order->items->sum(fn($item) => $item->pivot->quantity * $item->price), 2) }} EGP
+                                {{ ($order->items->sum(fn($item) => $item->pivot->quantity * $item->price)) }} EGP
                             </th>
                         </tr>
                     </tfoot>
                 </table>
             </div>
-
             @if ($order->status->value === 'pending')
                 <div class="d-flex justify-content-end gap-2 mt-3">
                     <form method="POST" action="{{ route('admin.orders.confirm', [$order->id, 'Confirmed']) }}">

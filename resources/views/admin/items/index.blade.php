@@ -28,6 +28,13 @@
                             <p class="card-text">{{ $item->description }}</p>
                             <p class="card-text">{{ $item->price }}$</p>
                             <p class="card-text">{{ $item->user->email }}</p>
+                            <td>
+                                <form action="{{ route('items.destroy',$item->id) }}" method="Post">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                </form>
+                            </td>
                         </div>
                     </div>
                 </div>

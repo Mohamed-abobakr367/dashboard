@@ -9,9 +9,12 @@ use App\Services\UsersService;
 
 class UsersController extends Controller
 {
-    public function __construct(
-        protected UsersService $usersService
-    ) {}
+    protected $usersService;
+    
+    public function __construct(UsersService $usersService) 
+    {
+          $this->usersService = $usersService;
+    }
 
     public function index()
     {

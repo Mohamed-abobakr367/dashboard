@@ -15,7 +15,7 @@ class DashboardContoller extends Controller
         $userCount = User::count();
         $itemCount = Item::count();
         $orderCount = Order::count();
-        $salesCount = Item::count();
+        $salesCount = Order::where('status', 'confirmed')->count();
         return view('admin.index', compact('userCount','itemCount','orderCount','salesCount'));
     }
 }

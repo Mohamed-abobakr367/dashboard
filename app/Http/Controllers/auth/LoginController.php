@@ -42,7 +42,7 @@ class LoginController extends Controller
             return redirect()->intended('/dashboard');
         }
         
-        return redirect()->intended('/landingpage');
+        return redirect()->intended('/landing-page');
     }
 
     return back()->withErrors([

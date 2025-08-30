@@ -2,7 +2,8 @@
 
 namespace Database\Seeders;
 
-use App\Enums\OrderStatus;
+
+use App\Enums\OrderStatusEnum;
 use App\Models\Order;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -21,9 +22,9 @@ class OrderSeeder extends Seeder
         }
 
         $statuses = [
-            OrderStatus::Pending,
-            OrderStatus::Confirmed,
-            OrderStatus::Canceled,
+            OrderStatusEnum::Pending,
+            OrderStatusEnum::Confirmed,
+            OrderStatusEnum::Canceled,
         ];
 
         for ($i = 1; $i <= 5; $i++) {

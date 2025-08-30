@@ -25,6 +25,7 @@ class User extends Authenticatable
         'email',
         'password',
         'role',
+        'user_status'
     ];
 
     /**
@@ -48,7 +49,7 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
             'role' => UserRoleEnum::class,
-            'status'=>UserStatusEnum::class,
+            'user_status' => UserStatusEnum::class,
         ];
     }
 

@@ -29,8 +29,8 @@
                                 'banned' => 'danger',
                             ];
                         @endphp
-                        <span class="badge bg-{{ $statusColors[$user->user_status] ?? 'secondary' }}">
-                            {{ ucfirst($user->user_status) }}
+                        <span class="badge bg-{{ $statusColors[$user->user_status->value] ?? 'secondary' }}">
+                            {{ ucfirst($user->user_status->value) }}
                         </span>
                     </td>
                     <td>

@@ -14,8 +14,8 @@ class UsersRepository implements UsersRepositoryInterface
             ->paginate($perPage);
     }
 
-    public function updateStatus(User $user, string $status): bool
+    public function updateStatus(User $user, string $status) : void
     {
-        return $user->update(['user_status' => $status]);
+        $user->update(['user_status' => $status]);
     }
 }

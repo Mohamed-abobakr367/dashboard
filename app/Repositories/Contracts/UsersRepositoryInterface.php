@@ -8,5 +8,5 @@ use App\Models\User;
 interface UsersRepositoryInterface
 {
     public function paginate(int $perPage = 10): LengthAwarePaginator;
-    public function updateStatus(User $user, string $status): bool;
+    public function updateStatus(User $user, string $status): void;
 }

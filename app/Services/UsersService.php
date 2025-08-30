@@ -16,8 +16,8 @@ class UsersService
         return $this->usersRepository->paginate($perPage);
     }
 
-    public function changeStatus(User $user, string $status): bool
+    public function changeStatus(User $user, string $status) : void
     {
-        return $this->usersRepository->updateStatus($user, $status);
+        $this->usersRepository->updateStatus($user, $status);
     }
 }

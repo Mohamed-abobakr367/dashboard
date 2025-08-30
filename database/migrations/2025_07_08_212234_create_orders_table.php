@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('customer_address');
             $table->enum('status', ['pending', 'confirmed', 'canceled'])->default('pending');
+            // $table->enum('status', ['active', 'inactive', 'banned'])->default('active');
             $table->timestamps();
         });
     }

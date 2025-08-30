@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Enums\UserRole;
+use App\Enums\UserRoleEnum;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -18,7 +18,7 @@ class AdminSeeder extends Seeder
         User::create([
             "name" => "Admin User",
             "email" => "admin@mail.com",
-            "role" => UserRole::Admin,
+            "role" => UserRoleEnum::Admin,
             "password" => Hash::make("123456")
         ]);
     }
